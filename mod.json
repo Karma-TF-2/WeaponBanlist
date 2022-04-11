@@ -20,7 +20,7 @@
 		{
 			//The mods that the default weapon will have
 			"Name": "wb_default_mods", 
-			"DefaultValue": "pas_fast_ads, ricochet, pro_screen"
+			"DefaultValue": "pas_fast_ads, extended_ammo"
 			// available mods: "extended_ammo","silencer","hcog","redline_sight","aog","holosight","scope_4x","ricochet","threat_scope","quick_charge","tactical_cdr_on_kill","pas_fast_ads","pas_fast_swap","pas_fast_reload","pro_screen","pas_run_and_gun"
 		}
 	],
