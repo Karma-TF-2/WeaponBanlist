@@ -6,16 +6,16 @@
 	"ConVars": [
 		{ 	//The interval in which the server check what weapon the players are using
 			"Name": "wb_interval",
-			"DefaultValue": "2.0"
+			"DefaultValue": "1.0"
 		},
 		{ 	//List all the banned weapons spaced with a , get the names from this list https://noskill.gitbook.io/titanfall2/documentation/file-location/weapon/weapon-config-file-name
 			"Name": "wb_ban_list",
-			"DefaultValue": "mp_weapon_rspn101, mp_weapon_rspn101_og, mp_weapon_hemlock, mp_weapon_vinson, mp_weapon_g2, mp_weapon_car, mp_weapon_alternator_smg, mp_weapon_hemlok_smg, mp_weapon_r97, mp_weapon_lmg, mp_weapon_esaw, mp_weapon_dmr"
+			"DefaultValue": "mp_weapon_r97, mp_weapon_alternator_smg, mp_weapon_car, mp_weapon_hemlok_smg, mp_weapon_lmg, mp_weapon_lstar, mp_weapon_esaw, mp_weapon_rspn101, mp_weapon_vinson, mp_weapon_hemlok, mp_weapon_g2, mp_weapon_shotgun, mp_weapon_mastiff, mp_weapon_dmr, mp_weapon_doubletake, mp_weapon_epg, mp_weapon_smr, mp_weapon_pulse_lmg, mp_weapon_softball, mp_weapon_autopistol, mp_weapon_semipistol, mp_weapon_wingman, mp_weapon_shotgun_pistol, mp_weapon_rocket_launcher, mp_weapon_arc_launcher, mp_weapon_defender, mp_weapon_mgl, mp_weapon_wingman_n, mp_weapon_rspn101_og"
 		},
 		{
 			//The weapon that will be given to the player
 			"Name": "wb_default_weapon", 
-			"DefaultValue": "mp_weapon_softball"
+			"DefaultValue": "mp_weapon_sniper"
 		}
 	],
 	"Scripts": [
