@@ -3,24 +3,20 @@
 	"Description": "Customizable weapon banlist for server owners",
 	"Version": "1.0.0",
 	"LoadPriority": 2,
-	
 	"ConVars": [
-
-		{//The interval in which the server check what weapon the players are using
-			"Name": "weaponcheckInterval",
-			"DefaultValue": "5.0"
+		{ 	//The interval in which the server check what weapon the players are using
+			"Name": "wb_interval",
+			"DefaultValue": "2.0"
 		},
-		{//List all the banned weapons spaced with a , get the names from this list https://noskill.gitbook.io/titanfall2/documentation/file-location/weapon/weapon-config-file-name
-			"Name": "banList",
-			"DefaultValue": "mp_weapon_rspn101,mp_weapon_rspn101_og,mp_weapon_hemlock,mp_weapon_vinson,mp_weapon_g2,mp_weapon_car,mp_weapon_alternator_smg,mp_weapon_hemlok_smg,mp_weapon_r97,mp_weapon_lmg,mp_weapon_esaw,mp_weapon_dmr"
+		{ 	//List all the banned weapons spaced with a , get the names from this list https://noskill.gitbook.io/titanfall2/documentation/file-location/weapon/weapon-config-file-name
+			"Name": "wb_ban_list",
+			"DefaultValue": "mp_weapon_rspn101, mp_weapon_rspn101_og, mp_weapon_hemlock, mp_weapon_vinson, mp_weapon_g2, mp_weapon_car, mp_weapon_alternator_smg, mp_weapon_hemlok_smg, mp_weapon_r97, mp_weapon_lmg, mp_weapon_esaw, mp_weapon_dmr"
 		},
-				{
-			"Name": "defaultWeapon",//The weapon that will be given to the player
+		{
+			//The weapon that will be given to the player
+			"Name": "wb_default_weapon", 
 			"DefaultValue": "mp_weapon_softball"
-		},		{
-			"Name": "bannedWeaponWarning",//The warning shown on screen for the player that is using the weapon
-			"DefaultValue": "You are using a banned weapon"
-			}
+		}
 	],
 	"Scripts": [
 		{
@@ -32,4 +28,3 @@
 		}
 	]
 }
-

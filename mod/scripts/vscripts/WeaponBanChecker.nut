@@ -1,67 +1,51 @@
 global function WeaponBanChecker_Init
 
+array<string> banListArray = []
 
-
-void function WeaponBanChecker_Init()
-{
-
+void function WeaponBanChecker_Init(){
+	InitializeBanList()
 	thread WeaponBanChecker()
-
 }
-
 
 void function WeaponBanChecker()
 {
-	string banListString = GetConVarString("banList")
-	string bannedWeaponWarning = GetConVarString("bannedWeaponWarning")
-
-	array<string> banListArray =  split( banListString, "," )
-
-	while (true){
-		float interval = GetConVarFloat("weaponcheckInterval")
-		if(interval > 0.0)
-			wait interval
+	for(;;){
+		if(GetConVarFloat("wb_interval") > 0.0)
+			wait GetConVarFloat("wb_interval")
 		else
 			WaitFrame()
 
-
-
-			
-
-	foreach (entity player in GetPlayerArray())
-	{	
-		if(player.GetMainWeapons().len()>0){
-				print(banListArray.find(player.GetMainWeapons()[0].GetWeaponClassName()))
-
-			if(banListArray.find(player.GetMainWeapons()[0].GetWeaponClassName())!=-1){
-			SendHudMessage( player, bannedWeaponWarning, -1, 0.4, 255, 0, 0, 0, 0.15, 4, 0.15 )
-			changeWeapon(player,player.GetMainWeapons()[0].GetWeaponClassName())
-
-		}
-
-		
-		}
-
+		foreach (entity player in GetPlayerArray()){	
+			if(player.GetMainWeapons().len() > 0){
+				if(banListArray.find(player.GetMainWeapons()[0].GetWeaponClassName())!=-1){
+					ChangeWeapon(player,player.GetMainWeapons()[0].GetWeaponClassName())
+				}
+			}
 		}
 	}
 }
 
+/*
+ *	HELPER FUNCTIONS
+ */
 
+void function InitializeBanList(){
+	string cvar = GetConVarString( "wb_ban_list" )
 
-void function changeWeapon( entity player, string takingWeapon)
-{
-	string defaultWeapon = GetConVarString("defaultWeapon")
+    array<string> dirtyList = split( cvar, "," )
+    foreach (string ban in dirtyList)
+        banListArray.append(strip(ban))
+}
+
+void function ChangeWeapon( entity player, string takingWeapon){
+	string defaultWeapon = GetConVarString("wb_default_weapon")
 	player.TakeWeaponNow( takingWeapon )
 
-	try 
-	{
+	try {
 		player.GiveWeapon( defaultWeapon )
 		player.SetActiveWeaponByName( defaultWeapon )
 		string playername = player.GetPlayerName();
-	} catch(exception)
-	{
-		print(defaultWeapon + " is not a valid weapon.");
-	}
+	} catch(e){}
 
-	}
+}
 
