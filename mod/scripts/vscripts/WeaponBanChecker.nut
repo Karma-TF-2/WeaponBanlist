@@ -1,7 +1,7 @@
 global function WeaponBanChecker_Init
 
 array<string> banListArray = []
-array<string> mods
+array<string> mods = []
 
 void function WeaponBanChecker_Init(){
 	InitializeBanList()

@@ -1,6 +1,6 @@
 {
-	"Name": "Daar375.WeaponBanlist",
-	"Description": "Customizable weapon banlist for server owners",
+	"Name": "Karma.WeaponBanlist",
+	"Description": "Weapon banlist for Karma. Based on Daar375's mod", // [https://github.com/Daar375/WeaponBanlist]
 	"Version": "1.0.0",
 	"LoadPriority": 2,
 	"ConVars": [
