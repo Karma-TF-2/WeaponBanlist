@@ -16,6 +16,12 @@
 			//The weapon that will be given to the player
 			"Name": "wb_default_weapon", 
 			"DefaultValue": "mp_weapon_sniper"
+		},
+		{
+			//The mods that the default weapon will have
+			"Name": "wb_default_mods", 
+			"DefaultValue": "pas_fast_ads, ricochet, pro_screen"
+			// available mods: "extended_ammo","silencer","hcog","redline_sight","aog","holosight","scope_4x","ricochet","threat_scope","quick_charge","tactical_cdr_on_kill","pas_fast_ads","pas_fast_swap","pas_fast_reload","pro_screen","pas_run_and_gun"
 		}
 	],
 	"Scripts": [

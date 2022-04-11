@@ -1,9 +1,11 @@
 global function WeaponBanChecker_Init
 
 array<string> banListArray = []
+array<string> mods
 
 void function WeaponBanChecker_Init(){
 	InitializeBanList()
+	InitializeModList()
 	thread WeaponBanChecker_Main()
 }
 
@@ -14,6 +16,8 @@ void function WeaponBanChecker_Main()
 			wait GetConVarFloat("wb_interval")
 		else
 			WaitFrame()
+
+		// InitializeBanList() // uncomment if you wanna change allowed weapons live, still buggy but for weapon events 
 
 		try {
 			foreach (entity player in GetPlayerArray()) {
@@ -36,7 +40,7 @@ void function WeaponChecker(entity player, entity weapon, bool replace = false){
 		if(banListArray.contains(weapon.GetWeaponClassName())){
 			player.TakeWeaponNow(weapon.GetWeaponClassName())
 			if(replace){
-				player.GiveWeapon(GetConVarString("wb_default_weapon"))
+				player.GiveWeapon(GetConVarString("wb_default_weapon"), mods)
 				player.SetActiveWeaponByName(GetConVarString("wb_default_weapon"))
 			}
 		}
@@ -46,25 +50,24 @@ void function WeaponChecker(entity player, entity weapon, bool replace = false){
 void function CheckIfNoWeapons(entity player){
 	if(player.GetMainWeapons().len() <= 0){
 		try{
-			player.GiveWeapon(GetConVarString("wb_default_weapon"))
+			player.GiveWeapon(GetConVarString("wb_default_weapon"), mods)
 			player.SetActiveWeaponByName(GetConVarString("wb_default_weapon"))
 		} catch(e){}
 	}
 }
 
-void function ChangeWeapon(entity player, string takingWeapon){
-	try {
-		player.TakeWeaponNow(player.GetMainWeapons()[0].GetWeaponClassName())
-		player.GiveWeapon(GetConVarString("wb_default_weapon"))
-		player.SetActiveWeaponByName(GetConVarString("wb_default_weapon"))
-	} catch(e){printl("[WB] Failed giving weapons")}
-
-}
-
 void function InitializeBanList(){
-	string cvar = GetConVarString( "wb_ban_list" )
+	string cvar = GetConVarString("wb_ban_list")
 
     array<string> dirtyList = split( cvar, "," )
     foreach (string ban in dirtyList)
         banListArray.append(strip(ban))
+}
+
+void function InitializeModList(){
+	string cvar = GetConVarString("wb_default_mods")
+
+    array<string> dirtyList = split( cvar, "," )
+    foreach (string mod in dirtyList)
+        mods.append(strip(mod))
 }
